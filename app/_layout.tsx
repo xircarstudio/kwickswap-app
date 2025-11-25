@@ -1,6 +1,15 @@
 import { Stack } from "expo-router";
-import "./globals.css";
+import "./global.css";
 
 export default function RootLayout() {
-  return <Stack />;
+  return (
+    <Stack>
+      <Stack.Screen
+        name="(dash)"
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack>
+  );
 }

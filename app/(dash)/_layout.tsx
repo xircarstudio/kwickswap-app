@@ -18,11 +18,12 @@ export default function Layout() {
           fontSize: 10,
         },
         tabBarStyle: {
-          backgroundColor: "#020408F2",
+          backgroundColor: "#020408",
           height: 101,
           justifyContent: "center",
           alignItems: "center",
-          borderTopWidth: 0,
+          borderTopWidth: 1,
+          borderTopColor: "#ffffff0a",
         },
 
         tabBarItemStyle: {

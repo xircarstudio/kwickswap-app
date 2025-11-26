@@ -66,7 +66,12 @@ export default function Layout() {
             return (
               <>
                 <View className="absolute top-[-10]">
-                  <Shadow startColor={"#eb9066d8"} endColor={"#ff00ff10"}>
+                  <Shadow
+                    distance={5}
+                    startColor={"#00D68Fd8"}
+                    endColor={"#00D68F10"}
+                    offset={[0, 0]}
+                  >
                     <TouchableOpacity
                       onPress={onPress}
                       activeOpacity={0.85}
@@ -120,10 +125,6 @@ const styles = StyleSheet.create({
     borderRadius: 33,
     justifyContent: "center",
     alignItems: "center",
-    shadowColor: "blue",
-    shadowOffset: { width: 4, height: 4 },
-    shadowOpacity: 0.9,
-    shadowRadius: 33,
     elevation: 12, // Android shadow
   },
 

@@ -7,23 +7,28 @@ import {
 } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Shadow } from "react-native-shadow-2";
 
 export default function Layout() {
   return (
     <Tabs
       screenOptions={{
         tabBarLabelStyle: {
-          fontSize: 11,
+          fontSize: 10,
         },
         tabBarStyle: {
           backgroundColor: "#020408F2",
-          height: 90,
+          height: 101,
+          justifyContent: "center",
+          alignItems: "center",
+          borderTopWidth: 0,
         },
 
         tabBarItemStyle: {
           justifyContent: "center",
           alignItems: "center",
-          paddingTop: 10,
+          paddingTop: 25,
         },
       }}
     >
@@ -46,44 +51,45 @@ export default function Layout() {
       <Tabs.Screen
         name="swap"
         options={{
-          title: "Swap",
-
-          tabBarIcon: ({ size, color, focused }) => (
-            <AntDesign
-              name={focused ? "swap" : "swap"}
-              size={size + 4}
-              color={focused ? "#FF9900" : "#666666"}
-            />
-          ),
-
+          headerShown: false,
           tabBarLabelStyle: {
             fontSize: 12,
             fontWeight: "700",
-            color: "#FF9900",
+            color: "#fff",
             position: "absolute",
             top: 38,
           },
+          tabBarButton: (props) => {
+            const { accessibilityState, onPress } = props;
+            const focused = accessibilityState?.selected;
 
-          tabBarIconStyle: {
-            // React Native styles
-            position: "absolute",
-            top: -20,
-            width: "100%",
-            height: "100%",
-
-            backgroundColor: "#fff",
-
-            borderRadius: 160,
-            // shadow (iOS)
-            shadowColor: "#000",
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.2,
-            shadowRadius: 4,
-            // shadow (Android)
-            elevation: 4,
+            return (
+              <>
+                <View className="absolute top-[-10]">
+                  <Shadow startColor={"#eb9066d8"} endColor={"#ff00ff10"}>
+                    <TouchableOpacity
+                      onPress={onPress}
+                      activeOpacity={0.85}
+                      style={[
+                        styles.fabButton,
+                        { backgroundColor: focused ? "#FF9900" : "#00D68F" },
+                      ]}
+                    >
+                      <AntDesign name="swap" size={30} color="#003322" />
+                    </TouchableOpacity>
+                  </Shadow>
+                </View>
+                <Text
+                  style={[
+                    styles.fabLabel,
+                    { color: focused ? "#FF9900" : "#666" },
+                  ]}
+                >
+                  Swap
+                </Text>
+              </>
+            );
           },
-
-          headerShown: false,
         }}
       />
 
@@ -105,3 +111,25 @@ export default function Layout() {
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  fabButton: {
+    alignSelf: "center",
+    width: 60,
+    height: 60,
+    borderRadius: 33,
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "blue",
+    shadowOffset: { width: 4, height: 4 },
+    shadowOpacity: 0.9,
+    shadowRadius: 33,
+    elevation: 12, // Android shadow
+  },
+
+  fabLabel: {
+    fontSize: 12,
+    fontWeight: "700",
+    marginTop: 12,
+  },
+});

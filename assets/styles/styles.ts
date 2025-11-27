@@ -15,6 +15,7 @@ export interface ColorScheme {
   text: string;
   accent: string;
   input: string;
+  purple: string;
   gradients: Gradients;
 }
 
@@ -29,6 +30,7 @@ export const colors: ColorScheme = {
   text: "#F8FAFC",
   accent: "#003322",
   input: "#1E293B",
+  purple: "#AD46FF",
   gradients: {
     green: ["#00D68F", "#009966"] as const,
   },
@@ -37,7 +39,6 @@ export const colors: ColorScheme = {
 export const styles = StyleSheet.create({
   primaryButton: {
     width: "100%",
-    backgroundColor: colors.secondary,
     paddingVertical: 18,
     borderRadius: 14,
     alignItems: "center",

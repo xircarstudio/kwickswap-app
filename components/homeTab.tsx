@@ -18,14 +18,12 @@ export default function TabScreen({ name, title, icon }: Props) {
         headerShown: false,
         tabBarIcon: ({ color, size, focused }) => (
           <View className="items-center justify-center">
-            {/* Icon */}
             {icon(focused ? "#00cc00" : color, size)}
 
-            {/* Label */}
             <Text
               className={
                 focused
-                  ? "text-[#00cc00] text-[11px]"
+                  ? "text-green-950 text-[11px]"
                   : "text-gray-400 text-[11px]"
               }
             >

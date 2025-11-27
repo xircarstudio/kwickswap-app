@@ -1,4 +1,4 @@
-import { colors } from "@/app/styles";
+import { colors } from "@/assets/styles/styles";
 import { Tabs } from "expo-router";
 import React from "react";
 

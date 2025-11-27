@@ -9,7 +9,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Shadow } from "react-native-shadow-2";
-import { colors } from "../styles";
+import { colors } from "../../assets/styles/styles";
 
 export default function Layout() {
   return (
@@ -137,6 +137,6 @@ const styles = StyleSheet.create({
   fabLabel: {
     fontSize: 12,
     fontWeight: "700",
-    marginTop: 12,
+    marginTop: 28,
   },
 });

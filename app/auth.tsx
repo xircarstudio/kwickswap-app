@@ -37,6 +37,15 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
             offset={[50, 4]}
           />
         </View>
+        <View className="absolute bottom-28 right-28">
+          <Shadow
+            distance={190}
+            startColor={colors.info + "40"}
+            endColor={colors.secondary + "100"}
+            paintInside={true}
+            offset={[50, 4]}
+          />
+        </View>
         <View className="items-center mt-6 pt-20 bg-transparent">
           <Shadow
             distance={20}

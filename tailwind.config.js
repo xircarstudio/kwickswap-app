@@ -16,6 +16,9 @@ module.exports = {
         accent: "#003322",
         input: "#1E293B",
       },
+      padding: {
+        container: "16px",
+      },
     },
   },
   plugins: [],

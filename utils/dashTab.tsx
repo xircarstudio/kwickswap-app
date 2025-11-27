@@ -1,3 +1,4 @@
+import { colors } from "@/app/styles";
 import { Tabs } from "expo-router";
 import React from "react";
 
@@ -13,10 +14,10 @@ export function createTab(
       options={{
         title,
         headerShown: false,
-        tabBarActiveTintColor: "#00D68F",
-        tabBarInactiveTintColor: "#94A3B8",
+        tabBarActiveTintColor: colors.secondary,
+        tabBarInactiveTintColor: colors.muted,
         tabBarIcon: ({ size, focused }) =>
-          icon(focused ? "#00D68F" : "#94A3B8", size, focused),
+          icon(focused ? colors.secondary : colors.muted, size, focused),
       }}
     />
   );

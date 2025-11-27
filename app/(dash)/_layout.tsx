@@ -9,6 +9,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Shadow } from "react-native-shadow-2";
+import { colors } from "../styles";
 
 export default function Layout() {
   return (
@@ -18,7 +19,7 @@ export default function Layout() {
           fontSize: 10,
         },
         tabBarStyle: {
-          backgroundColor: "#020408",
+          backgroundColor: colors.primary,
           height: 101,
           justifyContent: "center",
           alignItems: "center",
@@ -78,10 +79,14 @@ export default function Layout() {
                       activeOpacity={0.85}
                       style={[
                         styles.fabButton,
-                        { backgroundColor: focused ? "#FF9900" : "#00D68F" },
+                        {
+                          backgroundColor: focused
+                            ? colors.muted
+                            : colors.secondary,
+                        },
                       ]}
                     >
-                      <AntDesign name="swap" size={30} color="#003322" />
+                      <AntDesign name="swap" size={30} color={colors.accent} />
                     </TouchableOpacity>
                   </Shadow>
                 </View>

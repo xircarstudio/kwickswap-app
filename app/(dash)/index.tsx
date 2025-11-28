@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   return (
-    <SafeAreaView className="flex-1 justify-center  bg-primary">
+    <SafeAreaView className="flex-1 justify-center  bg-primary px-container">
       <HomeHead />
       <View className="flex-1 justify-center items-center bg-primary">
         <Text className="text-success">

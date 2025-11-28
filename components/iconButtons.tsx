@@ -9,6 +9,8 @@ interface IconButtonProps {
   color?: string;
   className?: string;
   onPress?: () => void;
+
+  variant?: "lg" | "sm";
 }
 
 export default function IconButton({
@@ -18,11 +20,17 @@ export default function IconButton({
   color = "#fff",
   className = "",
   onPress,
+  variant = "lg",
 }: IconButtonProps) {
+  const variants = {
+    lg: "w-16 h-16 rounded-lg",
+    sm: "w-12 h-12 rounded-full",
+  };
+
   return (
     <Pressable onPress={onPress}>
       <View
-        className={`bg-primary border border-border rounded-lg w-16 h-16 justify-center items-center ${className}`}
+        className={`bg-primary border border-border justify-center items-center ${variants[variant]} ${className}`}
       >
         <Icon name={name} size={size} color={color} />
       </View>

@@ -4,6 +4,7 @@ import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Shadow } from "react-native-shadow-2";
 
+import IconButton from "@/components/iconButtons";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors, styles } from "../assets/styles/styles";
 
@@ -103,25 +104,32 @@ const WelcomeScreen: React.FC<Props> = ({ navigation }) => {
 
         <View className="flex-row justify-between mt-8 px-14">
           <View className="items-center">
-            <View className="bg-primary border border-border rounded-lg w-16 h-16 justify-around items-center">
-              <Ionicons
-                name="shield-checkmark"
-                size={25}
-                color={colors.secondary}
-              />
-            </View>
+            <IconButton
+              Icon={Ionicons}
+              name="shield-checkmark"
+              size={25}
+              color={colors.secondary}
+            />
             <Text className="text-muted text-center mt-3">Secure</Text>
           </View>
+
           <View className="items-center">
-            <View className="bg-primary border border-border rounded-lg w-16 h-16 justify-center items-center">
-              <Ionicons name="key-sharp" size={25} color={colors.info} />
-            </View>
+            <IconButton
+              Icon={Ionicons}
+              name="key-sharp"
+              size={25}
+              color={colors.info}
+            />
             <Text className="text-muted text-center mt-3">Non-custodial</Text>
           </View>
+
           <View className="items-center">
-            <View className="bg-primary border border-border rounded-lg w-16 h-16 justify-center items-center">
-              <Ionicons name="rocket-sharp" size={25} color={colors.purple} />
-            </View>
+            <IconButton
+              Icon={Ionicons}
+              name="rocket-sharp"
+              size={25}
+              color={colors.purple}
+            />
             <Text className="text-muted text-center mt-3">Fast</Text>
           </View>
         </View>

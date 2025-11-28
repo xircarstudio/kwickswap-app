@@ -6,7 +6,7 @@ function RouteGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
 
-  const isAuth = false;
+  const isAuth = true;
 
   useEffect(() => {
     setMounted(true);

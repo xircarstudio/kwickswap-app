@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 export interface Gradients {
   green: readonly [string, string];
+  top: readonly [string, string];
 }
 
 export interface ColorScheme {
@@ -32,7 +33,9 @@ export const colors: ColorScheme = {
   input: "#1E293B",
   purple: "#AD46FF",
   gradients: {
-    green: ["#00D68F", "#009966"] as const,
+    green: ["#020408", "#00D68F"] as const,
+
+    top: ["#AD46FF" + "30", "#2B7FFF" + "30"] as const,
   },
 };
 

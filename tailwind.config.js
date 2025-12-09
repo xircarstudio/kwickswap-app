@@ -18,6 +18,7 @@ module.exports = {
         input: "#1E293B",
         border: "#1E293B",
         purple: "#AD46FF",
+        ocean: "#00B8DB",
       },
       padding: {
         container: "16px",

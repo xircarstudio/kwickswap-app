@@ -18,6 +18,7 @@ export interface ColorScheme {
   input: string;
   purple: string;
   pink: string;
+  ocean: string;
   gradients: Gradients;
 }
 
@@ -34,6 +35,7 @@ export const colors: ColorScheme = {
   input: "#1E293B",
   purple: "#AD46FF",
   pink: "#F6339A",
+  ocean: "#00B8DB",
   gradients: {
     green: ["#020408", "#00D68F"] as const,
 

@@ -1,3 +1,4 @@
+import HomeButtonStack from "@/components/HomeButtonStack";
 import HomeHead from "@/components/homeHead";
 import TopGradientCard from "@/components/TopGradientCard";
 import { View } from "react-native";
@@ -9,6 +10,9 @@ export default function Index() {
       <HomeHead />
       <View>
         <TopGradientCard />
+      </View>
+      <View>
+        <HomeButtonStack />
       </View>
     </SafeAreaView>
   );

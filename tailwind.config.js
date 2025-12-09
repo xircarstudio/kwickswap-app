@@ -12,10 +12,11 @@ module.exports = {
         danger: "#EF4444",
         warning: "#F0B100",
         muted: "#94A3B8",
-        text: "#F8FAFC",
+        light: "#F8FAFC",
         accent: "#003322",
         input: "#1E293B",
         border: "#1E293B",
+        purple: "#AD46FF",
       },
       padding: {
         container: "16px",

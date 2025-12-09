@@ -26,7 +26,7 @@ export const colors: ColorScheme = {
   success: "#009B31",
   info: "#2B7FFF",
   danger: "#EF4444",
-  warning: "#F0B100",
+  warning: "#FF6900",
   muted: "#94A3B8",
   text: "#F8FAFC",
   accent: "#003322",

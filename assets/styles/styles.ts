@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export interface Gradients {
   green: readonly [string, string];
   top: readonly [string, string, string, string];
-  border: readonly [string, string];
+  quickCard: readonly [string, string];
 }
 
 export interface ColorScheme {
@@ -46,7 +46,7 @@ export const colors: ColorScheme = {
       "#2B7FFF" + "30",
       "#000000" + "10",
     ] as const,
-    border: ["#000000", "#ffffff"] as const,
+    quickCard: ["#AD46FF" + "20", "#2B7FFF" + "20"] as const,
   },
 };
 

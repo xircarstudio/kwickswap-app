@@ -1,13 +1,16 @@
 import { colors } from "@/assets/styles/styles";
-import HomeButtonStack from "@/components/HomeButtonStack";
-import HomeHead from "@/components/homeHead";
-import TopGradientCard from "@/components/TopGradientCard";
+import HomeButtonStack from "@/components/home/HomeButtonStack";
+import HomeHead from "@/components/home/homeHead";
+import TopGradientCard from "@/components/home/TopGradientCard";
+import ListHeadNav from "@/components/ListHeadNav";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
 import { ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
+  const router = useRouter();
   return (
     <SafeAreaView className="flex-1 justify-start  bg-primary px-container">
       <HomeHead />
@@ -56,6 +59,15 @@ export default function Index() {
               </View>
             </View>
           </LinearGradient>
+        </View>
+        <View className="mt-5">
+          <ListHeadNav
+            title="Recent Activity"
+            rightText="See all"
+            onRightPress={() => router.push("/profile")}
+          />
+
+          <View></View>
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -4,7 +4,7 @@ import { Dimensions, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Shadow } from "react-native-shadow-2";
 
-import IconButton from "@/components/iconButtons";
+import IconButton from "@/components/ui/iconButtons";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors, styles } from "../assets/styles/styles";
 

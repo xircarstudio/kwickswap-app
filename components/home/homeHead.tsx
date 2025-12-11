@@ -2,7 +2,7 @@ import { colors } from "@/assets/styles/styles";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import IconButton from "./iconButtons";
+import IconButton from "../ui/iconButtons";
 
 const HomeHead = () => {
   return (

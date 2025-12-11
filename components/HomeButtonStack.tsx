@@ -112,7 +112,7 @@ const HomeButtonStack: React.FC = () => {
               width: (width - 60) / 3,
               transform: [{ translateY }, { scale: scaleValues[i] }],
               opacity,
-              marginBottom: 18,
+              marginBottom: 30,
             }}
           >
             <TouchableWithoutFeedback
@@ -123,7 +123,7 @@ const HomeButtonStack: React.FC = () => {
                 console.log("Pressed:", btn.label);
               }}
             >
-              <View className="rounded-xl justify-center items-center mb-2 w-20 h-20 bg-muted/5 border border-muted/10">
+              <View className="rounded-2xl justify-center items-center mb-2 w-[60px] h-[60px] bg-muted/5 border border-muted/10">
                 <btn.Icon name={btn.name as any} size={26} color={btn.color} />
               </View>
             </TouchableWithoutFeedback>

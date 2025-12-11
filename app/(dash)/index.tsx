@@ -1,6 +1,7 @@
 import { colors } from "@/assets/styles/styles";
 import HomeButtonStack from "@/components/home/HomeButtonStack";
 import HomeHead from "@/components/home/homeHead";
+import RecentActivity from "@/components/home/RecentActivity";
 import TopGradientCard from "@/components/home/TopGradientCard";
 import ListHeadNav from "@/components/ListHeadNav";
 import { Ionicons } from "@expo/vector-icons";
@@ -67,7 +68,9 @@ export default function Index() {
             onRightPress={() => router.push("/profile")}
           />
 
-          <View></View>
+          <View>
+            <RecentActivity />
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>

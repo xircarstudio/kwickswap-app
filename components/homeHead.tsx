@@ -6,7 +6,7 @@ import IconButton from "./iconButtons";
 
 const HomeHead = () => {
   return (
-    <View className="h-[88px] bg-primary flex-row justify-between items-start mt-2">
+    <View className="h-[50px] bg-primary flex-row justify-between items-start mt-2 ">
       <View className="flex-row ">
         <View className="pr-4">
           <Image

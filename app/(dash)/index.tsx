@@ -17,7 +17,27 @@ export default function Index() {
       <HomeHead />
       <ScrollView>
         <View className="mt-8">
-          <TopGradientCard />
+          <TopGradientCard
+            balance="$42,593.40"
+            stats={[
+              {
+                icon: "logo-bitcoin",
+                iconColor: colors.warning,
+                text: "1.23 BTC",
+                bg: colors.primary + 15,
+                border: colors.purple + 40,
+              },
+              {
+                icon: "trending-up",
+                iconColor: colors.secondary,
+                text: "+12.3%",
+                bg: colors.secondary + 20,
+                border: colors.secondary + 40,
+                textColor: colors.secondary,
+              },
+            ]}
+          />
+
           <HomeButtonStack />
         </View>
         <View className="mt-5">

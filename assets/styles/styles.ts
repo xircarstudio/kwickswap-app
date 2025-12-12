@@ -42,7 +42,7 @@ export const colors: ColorScheme = {
 
     top: [
       "#000000" + "10",
-      "#AD46FF" + "30",
+      "#AD46FF" + "50",
       "#2B7FFF" + "30",
       "#000000" + "10",
     ] as const,

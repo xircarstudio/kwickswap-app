@@ -8,6 +8,7 @@ interface StatItem {
   icon: keyof typeof Ionicons.glyphMap;
   iconColor?: string;
   text: string;
+  subText: string;
   bg?: string;
   border?: string;
   textColor?: string;
@@ -16,6 +17,7 @@ interface StatItem {
 interface TopGradientCardProps {
   gradientColors?: any;
   balance: string;
+
   label?: string;
   labelIcon?: keyof typeof Ionicons.glyphMap;
   stats?: StatItem[];
@@ -61,12 +63,15 @@ export default function TopGradientCard({
               size={14}
               color={item.iconColor || colors.muted}
             />
-            <Text
-              className="text-sm"
-              style={{ color: item.textColor || colors.muted }}
-            >
-              {item.text}
-            </Text>
+            <View className="text-sm items-start flex-row">
+              <Text
+                className="text-sm"
+                style={{ color: item.textColor || colors.muted }}
+              >
+                {item.text}
+              </Text>
+              <Text className="text-xs text-muted"> {item.subText} </Text>
+            </View>
           </View>
         ))}
       </View>

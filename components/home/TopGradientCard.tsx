@@ -24,8 +24,8 @@ interface TopGradientCardProps {
 export default function TopGradientCard({
   gradientColors = colors.gradients.top,
   balance,
-  label = "Total Balance",
-  labelIcon = "wallet-outline",
+  label,
+  labelIcon,
   stats = [],
 }: TopGradientCardProps) {
   return (

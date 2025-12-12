@@ -19,11 +19,14 @@ export default function Index() {
         <View className="mt-8">
           <TopGradientCard
             balance="$42,593.40"
+            label="Total Balance"
+            labelIcon="wallet-sharp"
             stats={[
               {
                 icon: "logo-bitcoin",
                 iconColor: colors.warning,
                 text: "1.23 BTC",
+                subText: "",
                 bg: colors.primary + 15,
                 border: colors.purple + 40,
               },
@@ -31,6 +34,7 @@ export default function Index() {
                 icon: "trending-up",
                 iconColor: colors.secondary,
                 text: "+12.3%",
+                subText: "",
                 bg: colors.secondary + 20,
                 border: colors.secondary + 40,
                 textColor: colors.secondary,

@@ -3,26 +3,26 @@ import { colors } from "@/assets/styles/styles";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useRef, useState } from "react";
 import {
-  NativeSyntheticEvent,
   Pressable,
   StyleSheet,
   TextInput,
-  TextInputSubmitEditingEventData,
+  TextInputSubmitEditingEvent,
   View,
 } from "react-native";
 
 type SearchBarProps = {
-  value?: string; // controlled value (optional)
-  defaultValue?: string; // uncontrolled initial value
+  value?: string;
+  defaultValue?: string;
   placeholder?: string;
-  onChangeText?: (text: string) => void; // immediate change
-  onChangeDebounced?: (text: string) => void; // debounced change
-  onSubmit?: (e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void;
+  onChangeText?: (text: string) => void;
+  onChangeDebounced?: (text: string) => void;
+
+  onSubmit?: (e: TextInputSubmitEditingEvent) => void;
   debounceMs?: number;
   showClear?: boolean;
-  className?: string; // wrapper classes
+  className?: string;
   inputClassName?: string;
-  icon?: keyof typeof Ionicons.glyphMap; // leading icon
+  icon?: keyof typeof Ionicons.glyphMap;
   autoFocus?: boolean;
   accessibleLabel?: string;
 };
@@ -36,7 +36,7 @@ export default function SearchBar({
   onSubmit,
   debounceMs = 300,
   showClear = true,
-  className = "flex-row items-center bg-muted/5 rounded-2xl px-3 py-2  border border-muted/10 my-5",
+  className = "flex-row items-center bg-muted/5 rounded-2xl px-3 py-2 border border-muted/10 my-5",
   inputClassName = "flex-1 text-base text-light",
   icon = "search",
   autoFocus = false,
@@ -44,24 +44,25 @@ export default function SearchBar({
 }: SearchBarProps) {
   const [internal, setInternal] = useState<string>(value ?? defaultValue);
   const isControlled = typeof value === "string";
-  const debRef = useRef<number | null>(null);
+  const debRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // keep internal in sync if controlled
   useEffect(() => {
     if (isControlled) setInternal(value as string);
   }, [value, isControlled]);
 
-  // Debounced change effect
   useEffect(() => {
     if (!onChangeDebounced) return;
     if (debRef.current) clearTimeout(debRef.current);
-    // @ts-ignore - NodeJS timeout vs RN number; this is fine in RN
+
     debRef.current = setTimeout(() => {
       onChangeDebounced(internal);
-    }, debounceMs) as unknown as number;
+    }, debounceMs);
 
     return () => {
-      if (debRef.current) clearTimeout(debRef.current);
+      if (debRef.current) {
+        clearTimeout(debRef.current);
+        debRef.current = null;
+      }
     };
   }, [internal, debounceMs, onChangeDebounced]);
 
@@ -74,6 +75,10 @@ export default function SearchBar({
     if (!isControlled) setInternal("");
     onChangeText?.("");
     onChangeDebounced?.("");
+    if (debRef.current) {
+      clearTimeout(debRef.current);
+      debRef.current = null;
+    }
   };
 
   return (
@@ -91,6 +96,7 @@ export default function SearchBar({
         placeholder={placeholder}
         placeholderTextColor={colors.muted}
         returnKeyType="search"
+        // <-- pass the handler matching TextInput's expected signature
         onSubmitEditing={onSubmit}
         autoFocus={autoFocus}
         className={inputClassName}
@@ -98,17 +104,16 @@ export default function SearchBar({
         accessibilityLabel={accessibleLabel}
       />
 
-      {showClear && internal.length > 0 ? (
+      {showClear && internal.length > 0 && (
         <Pressable onPress={clear} className="ml-2 p-1 rounded-full">
           <Ionicons name="close-circle" size={18} color={colors.muted} />
         </Pressable>
-      ) : null}
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  // ensure TextInput doesn't inherit unintended padding from NativeWind in some RN versions
   inputOverride: {
     padding: 0,
     margin: 0,

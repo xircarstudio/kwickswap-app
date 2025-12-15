@@ -25,10 +25,10 @@ type SegmentedTabsProps = {
   tabClassName?: string;
   activeTextClassName?: string;
   inactiveTextClassName?: string;
-  activeBackgroundColor?: string; // pill color
+  activeBackgroundColor?: string;
   activeTextColor?: string;
   inactiveTextColor?: string;
-  pillPadding?: number; // extra padding inside pill
+  pillPadding?: number;
   style?: ViewStyle;
   accessibleLabel?: string;
 };
@@ -49,7 +49,6 @@ export default function SegmentedTabs({
   style,
   accessibleLabel = "Segmented tabs",
 }: SegmentedTabsProps) {
-  // controlled vs uncontrolled
   const isControlled = typeof value === "string";
   const [activeKey, setActiveKey] = useState<string>(
     value ?? defaultValue ?? tabs[0]?.key
@@ -67,7 +66,6 @@ export default function SegmentedTabs({
     }
   }, [value, isControlled, activeKey]);
 
-  // animate when activeKey or measurements change
   useEffect(() => {
     const idx = tabs.findIndex((t) => t.key === activeKey);
     const m = measures.current[idx];
@@ -92,24 +90,20 @@ export default function SegmentedTabs({
     onChange?.(key);
   };
 
-  // record layout for each tab
   const onTabLayout = (index: number) => (ev: LayoutChangeEvent) => {
     const { x, width } = ev.nativeEvent.layout;
     measures.current[index] = { x, width };
 
-    // if this is the active one and anim not set yet, set immediately
     if (tabs[index].key === activeKey) {
       animLeft.setValue(x);
       animWidth.setValue(width);
     }
   };
 
-  // container layout (optional) to account for padding if needed
   const onContainerLayout = (ev: LayoutChangeEvent) => {
     containerX.current = ev.nativeEvent.layout.x;
   };
 
-  // fallback pill style while measure isn't ready
   const pillStyle = {
     position: "absolute" as const,
     left: animLeft,
@@ -129,14 +123,8 @@ export default function SegmentedTabs({
       accessible
       accessibilityLabel={accessibleLabel}
     >
-      {/* Animated pill (positioned absolutely inside container) */}
-      <Animated.View
-        pointerEvents="none"
-        style={pillStyle}
-        // add subtle shadow (optional)
-      />
+      <Animated.View pointerEvents="none" style={pillStyle} />
 
-      {/* Tabs */}
       {tabs.map((t, i) => {
         const isActive = t.key === activeKey;
         return (

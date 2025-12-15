@@ -65,16 +65,7 @@ const WalletScreen = () => {
 
   const TabsComponent = () => (
     <View style={styles.tabsContainer}>
-      <SegmentedTabs
-        tabs={tabs}
-        value={activeTab}
-        onChange={setActiveTab}
-        containerClassName="bg-[#0f1724]/60 rounded-full p-1 mx-4"
-        tabClassName="flex-1 px-6 py-2 items-center justify-center"
-        activeBackgroundColor={colors.primary}
-        activeTextColor="#04221A"
-        inactiveTextColor={colors.muted}
-      />
+      <SegmentedTabs tabs={tabs} value={activeTab} onChange={setActiveTab} />
     </View>
   );
 

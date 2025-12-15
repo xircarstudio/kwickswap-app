@@ -36,12 +36,22 @@ const WalletScreen = () => {
   };
 
   const filteredActivities = useMemo(() => {
-    if (activeTab === "crypto")
-      return activities.filter((a) => a.currencyType === "crypto");
-    if (activeTab === "fiat")
-      return activities.filter((a) => a.currencyType === "fiat");
-    return activities;
-  }, [activeTab]);
+    const query = q.trim().toLowerCase();
+
+    return activities.filter((a) => {
+      // tab filter
+      const matchesTab = activeTab === "all" || a.currencyType === activeTab;
+
+      // search filter
+      const matchesSearch =
+        query.length === 0 ||
+        a.title.toLowerCase().includes(query) ||
+        a.subtitle?.toLowerCase().includes(query) ||
+        a.amount.toLowerCase().includes(query);
+
+      return matchesTab && matchesSearch;
+    });
+  }, [activeTab, q]);
 
   const listData = useMemo(() => {
     return [
@@ -57,6 +67,11 @@ const WalletScreen = () => {
 
   const headerHeight = 400;
 
+  const handleTabChange = (key: string) => {
+    setActiveTab(key);
+    setQ("");
+  };
+
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const offsetY = event.nativeEvent.contentOffset.y;
 
@@ -65,7 +80,7 @@ const WalletScreen = () => {
 
   const TabsComponent = () => (
     <View style={styles.tabsContainer}>
-      <SegmentedTabs tabs={tabs} value={activeTab} onChange={setActiveTab} />
+      <SegmentedTabs tabs={tabs} value={activeTab} onChange={handleTabChange} />
     </View>
   );
 

@@ -15,7 +15,7 @@ export default function Index() {
   return (
     <SafeAreaView className="flex-1 justify-start  bg-primary px-container">
       <HomeHead />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View className="mt-8">
           <TopGradientCard
             balance="$42,593.40"
@@ -53,8 +53,14 @@ export default function Index() {
             style={{
               marginTop: 10,
               borderRadius: 20,
+              padding: 32,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 24,
+              borderWidth: 1,
+              borderColor: colors.purple, //
             }}
-            className="justify-between items-center flex-row gap-6 p-8 border border-purple rounded-2xl"
           >
             <View className="bg-purple/50 p-4 rounded-2xl">
               <Ionicons

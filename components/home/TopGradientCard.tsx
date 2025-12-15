@@ -37,8 +37,13 @@ export default function TopGradientCard({
       end={{ x: 1, y: 0 }}
       style={{
         borderRadius: 29,
+        padding: 32,
+        gap: 16,
+        alignItems: "center",
+        position: "relative",
+        borderWidth: 1,
+        borderColor: colors.muted + "20",
       }}
-      className="gap-4 border border-muted/20 p-8 items-center relative"
     >
       <View className="flex-row gap-5 items-center bg-muted/10 border border-muted/40 rounded-3xl px-8 py-2">
         <Text className="text-muted">{label}</Text>

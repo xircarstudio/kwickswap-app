@@ -21,7 +21,7 @@ export const activities: ActivityItem[] = [
     id: 1,
     title: "Netflix Subscriptions",
     subtitle: "Today, 09:41 AM",
-    amount: "-₦5,000.00",
+    amount: "-₦5,0001.00",
     currencyAmount: -5000,
     currencyCode: "NGN",
     currencyType: "fiat",

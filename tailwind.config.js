@@ -24,6 +24,9 @@ module.exports = {
       padding: {
         container: "16px",
       },
+      margin: {
+        container: "16px",
+      },
     },
   },
   plugins: [],

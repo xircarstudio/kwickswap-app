@@ -18,7 +18,6 @@ type ItemCardProps = {
 
   image?: ImageSourcePropType;
 
-  /** Optional overrides */
   leftSlot?: React.ReactNode;
   rightSlot?: React.ReactNode;
 

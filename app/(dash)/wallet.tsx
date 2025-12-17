@@ -15,7 +15,6 @@ import {
   StyleSheet,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const WalletScreen = () => {
   const [q, setQ] = useState("");
@@ -143,7 +142,7 @@ const WalletScreen = () => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-primary">
+    <View className="flex-1 bg-primary">
       {showFixedTabs && (
         <View style={styles.fixedTabsWrapper}>
           <TabsComponent />
@@ -168,7 +167,7 @@ const WalletScreen = () => {
         contentContainerStyle={styles.contentContainer}
         ListFooterComponent={<View className="pb-6" />}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

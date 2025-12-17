@@ -8,12 +8,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import { ScrollView, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const router = useRouter();
   return (
-    <SafeAreaView className="flex-1 justify-start  bg-primary px-container">
+    <View className="flex-1 justify-start  bg-primary px-container">
       <HomeHead />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className="mt-8">
@@ -103,6 +102,6 @@ export default function Index() {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }

@@ -8,118 +8,125 @@ import {
 import { Tabs } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Shadow } from "react-native-shadow-2";
 import { colors } from "../../assets/styles/styles";
 
 export default function Layout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarLabelStyle: {
-          fontSize: 10,
-        },
-        tabBarStyle: {
-          backgroundColor: colors.primary,
-          height: 101,
-          justifyContent: "center",
-          alignItems: "center",
-          borderTopWidth: 1,
-          borderTopColor: "#ffffff0a",
-        },
-
-        tabBarItemStyle: {
-          justifyContent: "center",
-          alignItems: "center",
-          paddingTop: 25,
-        },
-      }}
-    >
-      {createTab("index", "Home", (color, size, focused) => (
-        <Octicons
-          name={focused ? "home-fill" : "home"}
-          size={size}
-          color={color}
-        />
-      ))}
-
-      {createTab("wallet", "Wallet", (color, size, focused) => (
-        <Ionicons
-          name={focused ? "wallet" : "wallet-outline"}
-          size={size}
-          color={color}
-        />
-      ))}
-
-      <Tabs.Screen
-        name="swap"
-        options={{
-          headerShown: false,
+    <SafeAreaView className="flex-1 bg-primary">
+      <Tabs
+        screenOptions={{
           tabBarLabelStyle: {
-            fontSize: 12,
-            fontWeight: "700",
-            color: "#fff",
-            position: "absolute",
-            top: 38,
+            fontSize: 10,
           },
-          tabBarButton: (props) => {
-            const { accessibilityState, onPress } = props;
-            const focused = accessibilityState?.selected;
+          tabBarStyle: {
+            backgroundColor: colors.primary,
+            height: 101,
+            justifyContent: "center",
+            alignItems: "center",
+            borderTopWidth: 1,
+            borderTopColor: "#ffffff0a",
+          },
 
-            return (
-              <>
-                <View className="absolute top-[-10]">
-                  <Shadow
-                    distance={5}
-                    startColor={"#00D68Fd8"}
-                    endColor={"#00D68F10"}
-                    offset={[0, 0]}
-                  >
-                    <TouchableOpacity
-                      onPress={onPress}
-                      activeOpacity={0.85}
-                      style={[
-                        styles.fabButton,
-                        {
-                          backgroundColor: focused
-                            ? colors.muted
-                            : colors.secondary,
-                        },
-                      ]}
-                    >
-                      <AntDesign name="swap" size={30} color={colors.accent} />
-                    </TouchableOpacity>
-                  </Shadow>
-                </View>
-                <Text
-                  style={[
-                    styles.fabLabel,
-                    { color: focused ? "#FF9900" : "#666" },
-                  ]}
-                >
-                  Swap
-                </Text>
-              </>
-            );
+          tabBarItemStyle: {
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: 25,
           },
         }}
-      />
+      >
+        {createTab("index", "Home", (color, size, focused) => (
+          <Octicons
+            name={focused ? "home-fill" : "home"}
+            size={size}
+            color={color}
+          />
+        ))}
 
-      {createTab("cards", "Cards", (color, size, focused) => (
-        <Ionicons
-          name={focused ? "card" : "card-outline"}
-          size={size}
-          color={color}
-        />
-      ))}
+        {createTab("wallet", "Wallet", (color, size, focused) => (
+          <Ionicons
+            name={focused ? "wallet" : "wallet-outline"}
+            size={size}
+            color={color}
+          />
+        ))}
 
-      {createTab("profile", "Profile", (color, size, focused) => (
-        <FontAwesome5
-          name={focused ? "user-alt" : "user"}
-          size={size}
-          color={color}
+        <Tabs.Screen
+          name="swap"
+          options={{
+            headerShown: false,
+            tabBarLabelStyle: {
+              fontSize: 12,
+              fontWeight: "700",
+              color: "#fff",
+              position: "absolute",
+              top: 38,
+            },
+            tabBarButton: (props) => {
+              const { accessibilityState, onPress } = props;
+              const focused = accessibilityState?.selected;
+
+              return (
+                <>
+                  <View className="absolute top-[-10]">
+                    <Shadow
+                      distance={5}
+                      startColor={"#00D68Fd8"}
+                      endColor={"#00D68F10"}
+                      offset={[0, 0]}
+                    >
+                      <TouchableOpacity
+                        onPress={onPress}
+                        activeOpacity={0.85}
+                        style={[
+                          styles.fabButton,
+                          {
+                            backgroundColor: focused
+                              ? colors.muted
+                              : colors.secondary,
+                          },
+                        ]}
+                      >
+                        <AntDesign
+                          name="swap"
+                          size={30}
+                          color={colors.accent}
+                        />
+                      </TouchableOpacity>
+                    </Shadow>
+                  </View>
+                  <Text
+                    style={[
+                      styles.fabLabel,
+                      { color: focused ? "#FF9900" : "#666" },
+                    ]}
+                  >
+                    Swap
+                  </Text>
+                </>
+              );
+            },
+          }}
         />
-      ))}
-    </Tabs>
+
+        {createTab("cards", "Cards", (color, size, focused) => (
+          <Ionicons
+            name={focused ? "card" : "card-outline"}
+            size={size}
+            color={color}
+          />
+        ))}
+
+        {createTab("profile", "Profile", (color, size, focused) => (
+          <FontAwesome5
+            name={focused ? "user-alt" : "user"}
+            size={size}
+            color={color}
+          />
+        ))}
+      </Tabs>
+    </SafeAreaView>
   );
 }
 

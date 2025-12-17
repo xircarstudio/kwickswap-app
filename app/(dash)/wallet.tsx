@@ -1,6 +1,7 @@
 import { colors } from "@/assets/styles/styles";
 import HomeHead from "@/components/home/homeHead";
 import TopGradientCard from "@/components/home/TopGradientCard";
+import ItemCard from "@/components/ui/ItemCard";
 import SearchBar from "@/components/ui/SearchBar";
 import SegmentedTabs, { TabItem } from "@/components/ui/SegmentedTabs";
 import { activities } from "@/libs/history";
@@ -12,7 +13,6 @@ import {
   NativeSyntheticEvent,
   RefreshControl,
   StyleSheet,
-  Text,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -126,26 +126,15 @@ const WalletScreen = () => {
     if (item.type === "activity" && item.data) {
       const activity = item.data;
       return (
-        <View className="flex-row items-center justify-between p-4 rounded-2xl bg-muted/5 border border-muted/20 mx-4 my-2">
-          <View className="flex-row items-center gap-3">
-            <View className="w-10 h-10 rounded-full bg-muted/10 items-center justify-center">
-              <Text className="text-light font-semibold">
-                {activity.currencyType === "crypto" ? "₿" : "₦"}
-              </Text>
-            </View>
-
-            <View>
-              <Text className="text-light font-medium">{activity.title}</Text>
-              <Text className="text-muted text-xs">{activity.subtitle}</Text>
-            </View>
-          </View>
-
-          <Text
-            className="font-semibold"
-            style={{ color: activity.amountColor ?? colors.muted }}
-          >
-            {activity.amount}
-          </Text>
+        <View className="gap-4 mt-4 px-container">
+          <ItemCard
+            title={activity.title}
+            subtitle={`${activity.currencyAmount} ${activity.currencyCode}`}
+            amount={activity.amount}
+            amountColor={activity.amountColor}
+            type={activity.change}
+            image={activity.image}
+          />
         </View>
       );
     }

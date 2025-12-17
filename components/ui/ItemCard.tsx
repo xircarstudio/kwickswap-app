@@ -6,16 +6,24 @@ import {
   Pressable,
   Text,
   View,
+  ViewStyle,
 } from "react-native";
 
 type ItemCardProps = {
   title: string;
-  subtitle: string;
-  amount: string;
+  subtitle?: string;
+  amount?: string;
   amountColor?: string;
-  type: string;
-  image: ImageSourcePropType;
+  type?: string;
+
+  image?: ImageSourcePropType;
+
+  /** Optional overrides */
+  leftSlot?: React.ReactNode;
+  rightSlot?: React.ReactNode;
+
   onPress?: () => void;
+  containerStyle?: ViewStyle;
 };
 
 const ItemCard: React.FC<ItemCardProps> = ({
@@ -25,39 +33,55 @@ const ItemCard: React.FC<ItemCardProps> = ({
   amountColor,
   type,
   image,
+  leftSlot,
+  rightSlot,
   onPress,
+  containerStyle,
 }) => {
-  const Wrapper = onPress ? Pressable : View;
+  const Wrapper: any = onPress ? Pressable : View;
 
   return (
     <Wrapper
-      className="flex-row justify-between items-center border border-muted/30 rounded-2xl p-4 bg-muted/5"
       onPress={onPress}
+      className="flex-row justify-between items-center border border-muted/30 rounded-2xl p-4 bg-muted/5"
+      style={containerStyle}
     >
-      <View className="flex-row gap-3">
-        <View className="bg-muted rounded-full w-16 h-16 p-3 overflow-hidden">
-          <Image
-            source={image}
-            className="w-full h-full rounded-xl"
-            resizeMode="cover"
-          />
-        </View>
+      {/* LEFT */}
+      <View className="flex-row gap-3 items-center flex-1">
+        {leftSlot ? (
+          leftSlot
+        ) : image ? (
+          <View className="bg-muted rounded-full w-14 h-14 p-3 overflow-hidden">
+            <Image
+              source={image}
+              className="w-full h-full rounded-xl"
+              resizeMode="cover"
+            />
+          </View>
+        ) : null}
 
-        <View className="justify-center items-start">
+        <View className="justify-center">
           <Text className="text-text font-bold">{title}</Text>
-          <Text className="text-muted">{subtitle}</Text>
+          {subtitle && <Text className="text-muted">{subtitle}</Text>}
         </View>
       </View>
 
-      <View className="justify-center items-end">
-        <Text
-          className="text-text font-bold text-right"
-          style={{ color: amountColor || colors.text }}
-        >
-          {amount}
-        </Text>
-        <Text className="text-muted text-right">{type}</Text>
-      </View>
+      {/* RIGHT */}
+      {rightSlot ? (
+        rightSlot
+      ) : (
+        <View className="justify-center items-end">
+          {amount && (
+            <Text
+              className="font-bold text-right"
+              style={{ color: amountColor || colors.text }}
+            >
+              {amount}
+            </Text>
+          )}
+          {type && <Text className="text-muted text-right">{type}</Text>}
+        </View>
+      )}
     </Wrapper>
   );
 };

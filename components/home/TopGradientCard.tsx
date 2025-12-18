@@ -5,7 +5,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 interface StatItem {
-  icon: keyof typeof Ionicons.glyphMap;
+  icon?: keyof typeof Ionicons.glyphMap;
   iconColor?: string;
   text: string;
   subText: string;
@@ -55,11 +55,13 @@ export default function TopGradientCard({
               borderWidth: 1,
             }}
           >
-            <Ionicons
-              name={item.icon}
-              size={14}
-              color={item.iconColor || colors.muted}
-            />
+            {item.icon ? (
+              <Ionicons
+                name={item.icon || ""}
+                size={14}
+                color={item.iconColor || colors.muted}
+              />
+            ) : null}
             <View className="text-sm items-start flex-row">
               <Text
                 className="text-sm"

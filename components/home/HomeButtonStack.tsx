@@ -14,6 +14,7 @@ import {
   FontAwesome6,
   Ionicons,
 } from "@expo/vector-icons";
+import { Href, useRouter } from "expo-router";
 
 const { width } = Dimensions.get("window");
 
@@ -24,43 +25,57 @@ type ButtonItem = {
   Icon: any;
   name: string;
   color?: string;
+  route: Href;
 };
 
 const BUTTONS: ButtonItem[] = [
-  { label: "Send", Icon: FontAwesome, name: "send", color: colors.secondary },
+  {
+    label: "Send",
+    Icon: FontAwesome,
+    name: "send",
+    color: colors.secondary,
+    route: "/(sub)/send",
+  },
   {
     label: "Receive",
     Icon: Ionicons,
     name: "download",
     color: colors.info,
+    route: "/(sub)/receive",
   },
   {
     label: "Swap",
     Icon: FontAwesome6,
     name: "arrows-rotate",
     color: colors.purple,
+    route: "/(dash)/swap",
   },
   {
     label: "Bills",
     Icon: Ionicons,
     name: "receipt",
     color: colors.warning,
+    route: "/(sub)/bills",
   },
   {
     label: "Cards",
     Icon: FontAwesome,
     name: "credit-card-alt",
     color: colors.pink,
+    route: "/(dash)/cards",
   },
+
   {
     label: "Buy",
     Icon: FontAwesome5,
     name: "shopping-cart",
     color: colors.ocean,
+    route: "/(sub)/buy",
   },
 ];
 
 const HomeButtonStack: React.FC = () => {
+  const router = useRouter();
   const mountValues = useRef(BUTTONS.map(() => new Animated.Value(0))).current;
 
   const scaleValues = useRef(BUTTONS.map(() => new Animated.Value(1))).current;
@@ -118,10 +133,7 @@ const HomeButtonStack: React.FC = () => {
             <TouchableWithoutFeedback
               onPressIn={() => handlePressIn(i)}
               onPressOut={() => handlePressOut(i)}
-              onPress={() => {
-                // place your onPress handler here (navigation, modal, etc.)
-                console.log("Pressed:", btn.label);
-              }}
+              onPress={() => router.push(btn.route)}
             >
               <View className="rounded-2xl justify-center items-center mb-2 w-[60px] h-[60px] bg-muted/5 border border-muted/10">
                 <btn.Icon name={btn.name as any} size={26} color={btn.color} />

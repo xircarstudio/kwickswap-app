@@ -3,7 +3,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Pressable, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 type Props = {
   title: string;
@@ -21,7 +20,7 @@ export default function CustomHeader({
   const router = useRouter();
 
   return (
-    <SafeAreaView edges={["top"]} className="bg-primary">
+    <View className="bg-primary">
       <View className="">
         <View className="relative h-14 flex-row items-center justify-center px-4 border-b border-muted/10">
           <View className="absolute top-0 left-5 bottom-0 justify-center">
@@ -47,6 +46,6 @@ export default function CustomHeader({
           </View>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }

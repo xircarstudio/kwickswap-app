@@ -1,6 +1,6 @@
 import { colors } from "@/assets/styles/styles";
 import { createTab } from "@/utils/dashTab";
-import { FontAwesome5, Ionicons, Octicons } from "@expo/vector-icons";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
 import { StyleSheet } from "react-native";
@@ -31,8 +31,8 @@ export default function LayoutSub() {
         }}
       >
         {createTab("send", "Send", (color, size, focused) => (
-          <Ionicons
-            name={focused ? "wallet" : "wallet-outline"}
+          <FontAwesome
+            name={focused ? "send" : "send-o"}
             size={size}
             color={color}
           />
@@ -40,22 +40,23 @@ export default function LayoutSub() {
 
         {createTab("receive", "Receive", (color, size, focused) => (
           <Ionicons
-            name={focused ? "card" : "card-outline"}
+            name={focused ? "download" : "download-outline"}
             size={size}
             color={color}
           />
         ))}
 
         {createTab("bills", "Bills", (color, size, focused) => (
-          <FontAwesome5
-            name={focused ? "user-alt" : "user"}
+          <Ionicons
+            name={focused ? "receipt" : "receipt-outline"}
             size={size}
             color={color}
           />
         ))}
+
         {createTab("buy", "Buy", (color, size, focused) => (
-          <Octicons
-            name={focused ? "home-fill" : "home"}
+          <Ionicons
+            name={focused ? "cart-sharp" : "cart-outline"}
             size={size}
             color={color}
           />

@@ -173,7 +173,7 @@ export const SecuritySettingsItems: SettingItem[] = [
     title: "Security",
     color: colors.danger,
     icon: <Ionicons name="lock-closed" size={20} color={colors.danger} />,
-    route: "/",
+    route: "/settings/security",
   },
 ];
 

@@ -19,6 +19,13 @@ export default function BillsLayout() {
             header: () => <CustomHeader title="Settings" />,
           }}
         />
+
+        <Stack.Screen
+          name="security"
+          options={{
+            header: () => <CustomHeader title="Security" />,
+          }}
+        />
       </Stack>
     </SafeAreaView>
   );

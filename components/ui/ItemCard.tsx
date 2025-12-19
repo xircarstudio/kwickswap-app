@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 type ItemCardProps = {
-  title: string;
+  title?: string;
   subtitle?: string;
   amount?: string;
   amountColor?: string;

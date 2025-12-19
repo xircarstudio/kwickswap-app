@@ -22,10 +22,13 @@ export default function CustomHeader({
   return (
     <View className="bg-primary">
       <View className="">
-        <View className="relative h-14 flex-row items-center justify-center px-4 border-b border-muted/10">
+        <View className="relative h-16 flex-row items-center justify-center px-4 border-b border-muted/10">
           <View className="absolute top-0 left-5 bottom-0 justify-center">
             {showBack && (
-              <Pressable onPress={() => router.back()} className="mr-3">
+              <Pressable
+                onPress={() => router.back()}
+                className="mr-3 rounded-full bg-muted/5 p-2 border border-muted/10"
+              >
                 <Ionicons
                   name="arrow-back-sharp"
                   size={26}

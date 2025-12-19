@@ -30,7 +30,7 @@ function RouteGuard({ children }: { children: React.ReactNode }) {
 export default function RootLayout() {
   return (
     <RouteGuard>
-      <Stack>
+      <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen
           name="(dash)"
           options={{

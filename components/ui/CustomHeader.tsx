@@ -25,7 +25,7 @@ export default function CustomHeader({
         <View className="relative h-14 flex-row items-center justify-center px-4 border-b border-muted/10">
           <View className="absolute top-0 left-5 bottom-0 justify-center">
             {showBack && (
-              <Pressable onPress={() => router.push("/")} className="mr-3">
+              <Pressable onPress={() => router.back()} className="mr-3">
                 <Ionicons
                   name="arrow-back-sharp"
                   size={26}

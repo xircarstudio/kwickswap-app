@@ -13,7 +13,6 @@ export default function BillsLayout() {
           contentStyle: { backgroundColor: colors.primary },
         }}
       >
-        <Stack.Screen name="index" />
         <Stack.Screen
           name="airtime"
           options={{

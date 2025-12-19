@@ -5,12 +5,7 @@ import EmptyState from "@/components/ui/EmptyState";
 import IconButtonGrid, { IconButtonItem } from "@/components/ui/IconButtonGrid";
 import ItemCard from "@/components/ui/ItemCard";
 import { activities } from "@/libs/history";
-import {
-  FontAwesome,
-  FontAwesome5,
-  FontAwesome6,
-  Ionicons,
-} from "@expo/vector-icons";
+import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React from "react";
 import { ScrollView, Text, View } from "react-native";
@@ -32,47 +27,34 @@ const billActivities = activities.filter(
 
 const BUTTONS: IconButtonItem[] = [
   {
-    label: "Send",
-    Icon: FontAwesome,
-    name: "send",
-    color: colors.secondary,
-    route: "/(sub)/send",
-  },
-  {
-    label: "Receive",
-    Icon: Ionicons,
-    name: "download",
-    color: colors.info,
-    route: "/(sub)/receive",
-  },
-  {
-    label: "Swap",
+    label: "Airtime",
     Icon: FontAwesome6,
-    name: "arrows-rotate",
-    color: colors.purple,
-    route: "/(dash)/swap",
+    name: "phone",
+    color: colors.secondary,
+    route: "/bill/airtime",
   },
   {
-    label: "Bills",
+    label: "Data",
+    Icon: MaterialIcons,
+    name: "router",
+    color: colors.info,
+    route: "/bill/data",
+  },
+  {
+    label: "Electricity",
+    Icon: FontAwesome6,
+    name: "lightbulb",
+    color: colors.warning,
+    route: "/bill/electric",
+  },
+  {
+    label: "TV",
     Icon: Ionicons,
     name: "receipt",
-    color: colors.warning,
-    route: "/(sub)/bills",
+    color: colors.purple,
+    route: "/bill/tv",
   },
-  {
-    label: "Cards",
-    Icon: FontAwesome,
-    name: "credit-card-alt",
-    color: colors.pink,
-    route: "/(dash)/cards",
-  },
-  {
-    label: "Buy",
-    Icon: FontAwesome5,
-    name: "shopping-cart",
-    color: colors.ocean,
-    route: "/(sub)/buy",
-  },
+
   // {
   //   label: "Buy",
   //   image: require("@/assets/images/icon.png"),

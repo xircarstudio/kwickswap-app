@@ -6,7 +6,7 @@ import ItemCard from "../ui/ItemCard";
 const RecentActivity = () => {
   const lastFive = activities.slice(0, 5);
   return (
-    <View className="gap-4 mt-4">
+    <View className="gap-4 mt-0">
       {lastFive.map((activity) => (
         <ItemCard key={activity.id} {...activity} />
       ))}

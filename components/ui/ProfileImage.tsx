@@ -3,7 +3,7 @@ import React from "react";
 import { Image, ImageSourcePropType, Pressable, View } from "react-native";
 
 interface ProfileImageProps {
-  source: ImageSourcePropType;
+  source?: ImageSourcePropType;
   size?: number;
   onPress?: () => void;
 }
@@ -27,7 +27,7 @@ export default function ProfileImage({
         }}
       >
         <Image
-          source={source}
+          source={source ?? require("@/assets/img/profile.png")}
           style={{
             width: size - 4,
             height: size - 4,

@@ -5,6 +5,7 @@ import ItemCard from "@/components/ui/ItemCard";
 import SearchBar from "@/components/ui/SearchBar";
 import SegmentedTabs, { TabItem } from "@/components/ui/SegmentedTabs";
 import { activities } from "@/libs/history";
+import { router } from "expo-router";
 import React, { useMemo, useRef, useState } from "react";
 import {
   Animated,
@@ -87,7 +88,17 @@ const WalletScreen = () => {
     if (item.type === "header") {
       return (
         <View className="px-container">
-          <HomeHead />
+          <HomeHead
+            title="Wallet"
+            subtitle="Good Morning"
+            profileImage={require("@/assets/img/profile.png")}
+            onProfilePress={() => router.push("/profile")}
+            actions={[
+              { icon: "notifications", route: "/notifications" },
+              { icon: "settings", route: "/settings" },
+            ]}
+          />
+
           <View className="mt-8">
             <TopGradientCard
               balance="$42,593.40"

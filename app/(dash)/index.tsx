@@ -13,7 +13,17 @@ export default function Index() {
   const router = useRouter();
   return (
     <View className="flex-1 justify-start  bg-primary px-container">
-      <HomeHead />
+      <HomeHead
+        title="Alex Morgan"
+        subtitle="Good Morning"
+        profileImage={require("@/assets/img/profile.png")}
+        onProfilePress={() => router.push("/profile")}
+        actions={[
+          { icon: "notifications", route: "/notifications" },
+          { icon: "settings", route: "/settings" },
+        ]}
+      />
+
       <ScrollView showsVerticalScrollIndicator={false}>
         <View className="mt-8">
           <TopGradientCard

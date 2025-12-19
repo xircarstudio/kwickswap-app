@@ -19,13 +19,13 @@ interface HomeHeaderProps {
 
 export default function HomeHead({
   title,
-  subtitle = "Good Morning",
+  subtitle,
   profileImage,
   onProfilePress,
   actions = [],
 }: HomeHeaderProps) {
   return (
-    <View className="h-[50px] bg-primary flex-row justify-between items-start mt-2">
+    <View className="h-[40px] bg-primary flex-row justify-between items-center my-2">
       <View className="flex-row items-center">
         {profileImage && (
           <View className="pr-4">
@@ -38,19 +38,23 @@ export default function HomeHead({
         )}
 
         <View>
-          <Text className="text-muted">{subtitle}</Text>
+          {subtitle && <Text className="text-muted">{subtitle}</Text>}
           <Text className="text-white font-extrabold">{title}</Text>
         </View>
       </View>
 
       <View className="flex-row gap-5">
         {actions.map((action, index) => (
-          <HeaderActionIcon
+          <View
             key={index}
-            name={action.icon}
-            route={action.route}
-            onPress={action.onPress}
-          />
+            className="rounded-full bg-muted/5 p-2 border border-muted/10"
+          >
+            <HeaderActionIcon
+              name={action.icon}
+              route={action.route}
+              onPress={action.onPress}
+            />
+          </View>
         ))}
       </View>
     </View>

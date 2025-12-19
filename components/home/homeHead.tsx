@@ -1,44 +1,58 @@
-import { colors } from "@/assets/styles/styles";
-import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
-import IconButton from "../ui/iconButtons";
+import { ImageSourcePropType, Text, View } from "react-native";
+import HeaderActionIcon from "../ui/HeaderActionIcon";
+import ProfileImage from "../ui/ProfileImage";
 
-const HomeHead = () => {
+interface HeaderAction {
+  icon: keyof typeof import("@expo/vector-icons").Ionicons.glyphMap;
+  route?: any;
+  onPress?: () => void;
+}
+
+interface HomeHeaderProps {
+  title: string;
+  subtitle?: string;
+  profileImage?: ImageSourcePropType;
+  onProfilePress?: () => void;
+  actions?: HeaderAction[];
+}
+
+export default function HomeHead({
+  title,
+  subtitle = "Good Morning",
+  profileImage,
+  onProfilePress,
+  actions = [],
+}: HomeHeaderProps) {
   return (
-    <View className="h-[50px] bg-primary flex-row justify-between items-start mt-2 ">
-      <View className="flex-row ">
-        <View className="pr-4">
-          <Image
-            source={require("@/assets/img/profile.png")}
-            className="rounded-full w-10 h-10"
-          />
-        </View>
+    <View className="h-[50px] bg-primary flex-row justify-between items-start mt-2">
+      <View className="flex-row items-center">
+        {profileImage && (
+          <View className="pr-4">
+            <ProfileImage
+              source={profileImage}
+              size={40}
+              onPress={onProfilePress}
+            />
+          </View>
+        )}
+
         <View>
-          <Text className="text-muted">Good Morning</Text>
-          <Text className="text-white font-extrabold">Alex Morgan</Text>
+          <Text className="text-muted">{subtitle}</Text>
+          <Text className="text-white font-extrabold">{title}</Text>
         </View>
       </View>
+
       <View className="flex-row gap-5">
-        <IconButton
-          Icon={Ionicons}
-          name="notifications"
-          variant="sm"
-          size={20}
-          color={colors.muted}
-        />
-        <IconButton
-          Icon={Ionicons}
-          name="settings"
-          variant="sm"
-          size={20}
-          color={colors.muted}
-        />
+        {actions.map((action, index) => (
+          <HeaderActionIcon
+            key={index}
+            name={action.icon}
+            route={action.route}
+            onPress={action.onPress}
+          />
+        ))}
       </View>
     </View>
   );
-};
-
-export default HomeHead;
-
-const styles = StyleSheet.create({});
+}

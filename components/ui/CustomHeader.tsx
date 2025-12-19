@@ -31,8 +31,8 @@ export default function CustomHeader({
               >
                 <Ionicons
                   name="arrow-back-sharp"
-                  size={26}
-                  color={colors.text}
+                  size={20}
+                  color={colors.muted}
                 />
               </Pressable>
             )}

@@ -1,6 +1,7 @@
 // lib/SettingItems.ts
 import { colors } from "@/assets/styles/styles";
 import {
+  FontAwesome,
   FontAwesome5,
   Ionicons,
   MaterialCommunityIcons,
@@ -108,6 +109,95 @@ export const LegalItems: SettingItem[] = [
     title: "Privacy Policy",
     color: colors.ocean,
     icon: <Ionicons name="lock-closed" size={20} color={colors.ocean} />,
+    route: "/",
+  },
+];
+
+export const AccountSettingsItems: SettingItem[] = [
+  {
+    id: 1,
+    title: "Profile",
+    color: colors.info,
+    icon: <Ionicons name="person-circle-sharp" size={20} color={colors.info} />,
+    route: "/profile",
+  },
+  {
+    id: 2,
+    title: "Manage Subscriptions",
+    color: colors.purple,
+    icon: (
+      <MaterialIcons name="subscriptions" size={20} color={colors.purple} />
+    ),
+    route: "/",
+  },
+  {
+    id: 3,
+    title: "KYC Verification",
+    color: colors.secondary,
+    icon: <MaterialIcons name="verified" size={20} color={colors.secondary} />,
+    route: "/",
+  },
+];
+
+export const PreferenceSettingsItems: SettingItem[] = [
+  {
+    id: 1,
+    title: "Notification Settings",
+    color: colors.pink,
+    icon: <Ionicons name="notifications" size={20} color={colors.pink} />,
+    route: "/",
+  },
+  {
+    id: 2,
+    title: "Currency & Language",
+    color: colors.warning,
+    icon: <Ionicons name="cash" size={20} color={colors.warning} />,
+    route: "/",
+  },
+];
+
+export const SupportSettingsItems: SettingItem[] = [
+  {
+    id: 1,
+    title: "Help & Support",
+    color: colors.warning,
+    icon: (
+      <Ionicons name="help-circle-sharp" size={20} color={colors.warning} />
+    ),
+    route: "/",
+  },
+];
+export const SecuritySettingsItems: SettingItem[] = [
+  {
+    id: 1,
+    title: "Security",
+    color: colors.danger,
+    icon: <Ionicons name="lock-closed" size={20} color={colors.danger} />,
+    route: "/",
+  },
+];
+
+export const FinanceSettingsItems: SettingItem[] = [
+  {
+    id: 1,
+    title: "Connected Banks",
+    color: colors.info,
+    icon: (
+      <MaterialCommunityIcons
+        name="bank-transfer"
+        size={20}
+        color={colors.info}
+      />
+    ),
+    route: "/",
+  },
+  {
+    id: 2,
+    title: "Virtual Cards",
+    color: colors.purple,
+    icon: (
+      <FontAwesome name="credit-card-alt" size={20} color={colors.purple} />
+    ),
     route: "/",
   },
 ];

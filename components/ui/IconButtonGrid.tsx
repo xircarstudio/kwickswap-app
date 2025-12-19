@@ -81,6 +81,7 @@ export default function IconButtonGrid({
         });
 
         const color = btn.color ?? "#ffffff";
+        const radius = btn.image ? 6 : 10;
 
         return (
           <AView
@@ -102,17 +103,23 @@ export default function IconButtonGrid({
                 style={{ width: itemSize, height: itemSize }}
               >
                 <View
-                  className="justify-center items-center  rounded-2xl p-3"
+                  className="justify-center items-center  rounded-2xl "
                   style={{
                     backgroundColor: `${color}35`,
                     borderColor: `${color}40`,
                     borderWidth: 1,
+                    padding: radius,
                   }}
                 >
                   {btn.image ? (
                     <Image
                       source={btn.image}
-                      style={{ width: 26, height: 26, resizeMode: "contain" }}
+                      style={{
+                        width: 42,
+                        height: 42,
+                        resizeMode: "contain",
+                        borderRadius: 13,
+                      }}
                     />
                   ) : btn.Icon ? (
                     <btn.Icon

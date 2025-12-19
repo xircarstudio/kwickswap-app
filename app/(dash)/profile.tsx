@@ -1,5 +1,6 @@
 import { colors } from "@/assets/styles/styles";
 import HomeHead from "@/components/home/homeHead";
+import Button from "@/components/ui/Button";
 import ItemCard from "@/components/ui/ItemCard";
 import ProfileImage from "@/components/ui/ProfileImage";
 import {
@@ -195,6 +196,19 @@ const profile = () => {
               }
             />
           ))}
+        </View>
+
+        <View className="mt-6">
+          <Button
+            title="Log Out"
+            variant="danger"
+            Icon={Ionicons}
+            iconColor={colors.danger}
+            iconName="log-out"
+            onPress={() => {
+              console.log("Delete Account Pressed");
+            }}
+          />
         </View>
       </ScrollView>
     </View>

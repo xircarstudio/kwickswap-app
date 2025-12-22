@@ -1,10 +1,12 @@
 import { colors } from "@/assets/styles/styles";
+import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useRef } from "react";
 import {
   Animated,
   Image,
   ImageSourcePropType,
   Pressable,
+  Switch,
   Text,
   View,
   ViewStyle,
@@ -22,6 +24,17 @@ type ItemCardProps = {
   leftSlot?: React.ReactNode;
   rightSlot?: React.ReactNode;
 
+  /** NEW */
+  radio?: {
+    value: boolean;
+    onChange: () => void;
+  };
+
+  toggle?: {
+    value: boolean;
+    onChange: (val: boolean) => void;
+  };
+
   onPress?: () => void;
   containerStyle?: ViewStyle;
 };
@@ -37,6 +50,8 @@ const ItemCard: React.FC<ItemCardProps> = ({
   image,
   leftSlot,
   rightSlot,
+  radio,
+  toggle,
   onPress,
   containerStyle,
 }) => {
@@ -60,17 +75,11 @@ const ItemCard: React.FC<ItemCardProps> = ({
   }, []);
 
   const pressIn = () => {
-    Animated.spring(scale, {
-      toValue: 0.96,
-      useNativeDriver: true,
-    }).start();
+    Animated.spring(scale, { toValue: 0.96, useNativeDriver: true }).start();
   };
 
   const pressOut = () => {
-    Animated.spring(scale, {
-      toValue: 1,
-      useNativeDriver: true,
-    }).start();
+    Animated.spring(scale, { toValue: 1, useNativeDriver: true }).start();
   };
 
   const Wrapper: any = onPress ? Pressable : View;
@@ -95,33 +104,48 @@ const ItemCard: React.FC<ItemCardProps> = ({
             leftSlot
           ) : image ? (
             <View className="bg-muted rounded-full w-14 h-14 p-3 overflow-hidden">
-              <Image
-                source={image}
-                className="w-full h-full rounded-xl"
-                resizeMode="cover"
-              />
+              <Image source={image} className="w-full h-full rounded-xl" />
             </View>
           ) : null}
 
-          <View className="justify-center">
+          <View>
             {title && <Text className="text-text font-bold">{title}</Text>}
             {subtitle && <Text className="text-muted">{subtitle}</Text>}
           </View>
         </View>
 
-        {rightSlot ? (
+        {/* RIGHT */}
+        {radio ? (
+          <Pressable onPress={radio.onChange}>
+            <Ionicons
+              name={radio.value ? "radio-button-on" : "radio-button-off"}
+              size={22}
+              color={radio.value ? colors.secondary : colors.muted}
+            />
+          </Pressable>
+        ) : toggle ? (
+          <Switch
+            value={toggle.value}
+            onValueChange={toggle.onChange}
+            trackColor={{
+              false: "#333",
+              true: colors.secondary + "70",
+            }}
+            thumbColor={toggle.value ? colors.secondary : "#ccc"}
+          />
+        ) : rightSlot ? (
           rightSlot
         ) : (
-          <View className="justify-center items-end">
+          <View className="items-end">
             {amount && (
               <Text
-                className="font-bold text-right"
+                className="font-bold"
                 style={{ color: amountColor || colors.text }}
               >
                 {amount}
               </Text>
             )}
-            {type && <Text className="text-muted text-right">{type}</Text>}
+            {type && <Text className="text-muted">{type}</Text>}
           </View>
         )}
       </Wrapper>

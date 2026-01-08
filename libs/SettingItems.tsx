@@ -76,7 +76,7 @@ export const PreferenceItems: SettingItem[] = [
     title: "Notifications",
     color: colors.pink,
     icon: <Ionicons name="notifications" size={20} color={colors.pink} />,
-    route: "/",
+    route: "/settings/notification",
   },
 ];
 
@@ -146,7 +146,7 @@ export const PreferenceSettingsItems: SettingItem[] = [
     title: "Notification Settings",
     color: colors.pink,
     icon: <Ionicons name="notifications" size={20} color={colors.pink} />,
-    route: "/",
+    route: "/settings/notification",
   },
   {
     id: 2,

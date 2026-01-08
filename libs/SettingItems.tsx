@@ -17,6 +17,7 @@ export type SettingItem = {
   color: string;
   icon: React.ReactNode;
   route?: Href;
+  default?: boolean;
 };
 
 export const AccountItems: SettingItem[] = [
@@ -48,7 +49,7 @@ export const AccountItems: SettingItem[] = [
         color={colors.purple}
       />
     ),
-    route: "/",
+    route: "/settings/security",
   },
 ];
 
@@ -199,5 +200,49 @@ export const FinanceSettingsItems: SettingItem[] = [
       <FontAwesome name="credit-card-alt" size={20} color={colors.purple} />
     ),
     route: "/",
+  },
+];
+
+export const SecurityItems: SettingItem[] = [
+  {
+    id: 1,
+    title: "Change Pin",
+    color: colors.purple,
+    icon: <Ionicons name="lock-closed" size={20} color={colors.purple} />,
+    route: "/",
+  },
+  {
+    id: 2,
+    title: "Change Password",
+    color: colors.warning,
+    icon: <FontAwesome name="key" size={20} color={colors.warning} />,
+    route: "/",
+  },
+  {
+    id: 3,
+    title: "Backup Seed Phrase",
+    subtitle: "Keep your account secure",
+    color: colors.danger,
+    icon: <FontAwesome name="list-alt" size={20} color={colors.danger} />,
+    route: "/",
+  },
+];
+
+export const SecurityItems2: SettingItem[] = [
+  {
+    id: 1,
+    title: "Biometric Login",
+    subtitle: "Use fingerprint or face ID",
+    color: colors.info,
+    icon: <Ionicons name="finger-print" color={colors.info} size={20} />,
+    default: true,
+  },
+  {
+    id: 2,
+    title: "Two-Factor Authentication",
+    subtitle: "Extra security for your account",
+    color: colors.ocean,
+    icon: <Ionicons name="shield-checkmark" color={colors.ocean} size={20} />,
+    default: false,
   },
 ];

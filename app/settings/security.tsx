@@ -1,10 +1,6 @@
 import { colors } from "@/assets/styles/styles";
 import ItemCard from "@/components/ui/ItemCard";
-import {
-  AccountSettingsItems,
-  SecurityItems,
-  SecurityItems2,
-} from "@/libs/SettingItems";
+import { SecurityItems, SecurityItems2 } from "@/libs/SettingItems";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -13,7 +9,7 @@ import { ScrollView, Text, View } from "react-native";
 const Security = () => {
   const [toggles, setToggles] = useState<Record<string, boolean>>(
     Object.fromEntries(
-      AccountSettingsItems.map((item) => [item.id, item.default ?? false])
+      SecurityItems2.map((item) => [item.id, item.default ?? false])
     )
   );
 

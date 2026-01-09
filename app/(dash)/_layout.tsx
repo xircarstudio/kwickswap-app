@@ -134,6 +134,22 @@ export default function Layout() {
             header: () => <CustomHeader title="Connected Banks" />,
           }}
         />
+
+        <Tabs.Screen
+          name="pages/index"
+          options={{
+            href: null,
+            header: () => <CustomHeader title="Connected Banks" />,
+          }}
+        />
+
+        <Tabs.Screen
+          name="pages/help"
+          options={{
+            href: null,
+            header: () => <CustomHeader title="Connected Banks" />,
+          }}
+        />
       </Tabs>
     </SafeAreaView>
   );

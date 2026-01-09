@@ -1,3 +1,4 @@
+import CustomHeader from "@/components/ui/CustomHeader";
 import { createTab } from "@/utils/dashTab";
 import {
   AntDesign,
@@ -125,6 +126,14 @@ export default function Layout() {
             color={color}
           />
         ))}
+
+        <Tabs.Screen
+          name="connectedBanks"
+          options={{
+            href: null,
+            header: () => <CustomHeader title="Connected Banks" />,
+          }}
+        />
       </Tabs>
     </SafeAreaView>
   );

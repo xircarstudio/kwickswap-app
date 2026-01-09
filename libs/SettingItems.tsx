@@ -190,7 +190,7 @@ export const FinanceSettingsItems: SettingItem[] = [
         color={colors.info}
       />
     ),
-    route: "/",
+    route: "/settings/connectedBanks",
   },
   {
     id: 2,

@@ -165,7 +165,7 @@ export const SupportSettingsItems: SettingItem[] = [
     icon: (
       <Ionicons name="help-circle-sharp" size={20} color={colors.warning} />
     ),
-    route: "/",
+    route: "/pages/help",
   },
 ];
 export const SecuritySettingsItems: SettingItem[] = [
@@ -243,6 +243,62 @@ export const SecurityItems2: SettingItem[] = [
     subtitle: "Extra security for your account",
     color: colors.ocean,
     icon: <Ionicons name="shield-checkmark" color={colors.ocean} size={20} />,
+    default: false,
+  },
+];
+
+export const HelpItems: SettingItem[] = [
+  {
+    id: 1,
+    title: "FAQs",
+    color: colors.purple,
+    icon: <Ionicons name="help-circle-sharp" color={colors.purple} size={20} />,
+    default: true,
+  },
+  {
+    id: 2,
+    title: "Contact Support",
+
+    color: colors.ocean,
+    icon: <Ionicons name="chatbox-sharp" color={colors.ocean} size={20} />,
+    default: false,
+  },
+  {
+    id: 3,
+    title: "Live Chat",
+    subtitle: "Online",
+    color: colors.secondary,
+    icon: (
+      <Ionicons
+        name="chatbubble-ellipses-sharp"
+        color={colors.secondary}
+        size={20}
+      />
+    ),
+    default: false,
+  },
+  {
+    id: 4,
+    title: "Email Us",
+
+    color: colors.info,
+    icon: <Ionicons name="mail-unread-sharp" color={colors.info} size={20} />,
+    default: false,
+  },
+  {
+    id: 5,
+    title: "Report a Problem",
+
+    color: colors.warning,
+    icon: <Ionicons name="flag-sharp" color={colors.warning} size={20} />,
+    default: false,
+  },
+  {
+    id: 6,
+    title: "Help Center",
+
+    color: colors.secondary,
+    icon: <Ionicons name="list-sharp" color={colors.secondary} size={20} />,
     default: false,
   },
 ];

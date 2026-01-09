@@ -26,13 +26,6 @@ export default function BillsLayout() {
             header: () => <CustomHeader title="Security" />,
           }}
         />
-
-        <Stack.Screen
-          name="connectedBanks"
-          options={{
-            header: () => <CustomHeader title="Connected Banks" />,
-          }}
-        />
       </Stack>
     </SafeAreaView>
   );

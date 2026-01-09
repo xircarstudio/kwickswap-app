@@ -12,6 +12,8 @@ interface AppButtonProps {
   iconName?: string;
   iconSize?: number;
   iconColor?: string;
+  textStyle?: string;
+  className?: string;
   disabled?: boolean;
   containerStyle?: ViewStyle;
 }
@@ -38,8 +40,10 @@ export default function Button({
   variant = "primary",
   Icon,
   iconName,
+  className = "px-5 py-4",
   iconSize = 18,
   iconColor,
+  textStyle,
   disabled,
   containerStyle,
 }: AppButtonProps) {
@@ -77,7 +81,7 @@ export default function Button({
         onPress={onPress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
-        className="rounded-2xl px-5 py-4 flex-row items-center justify-center gap-2"
+        className={`${className} rounded-2xl  flex-row items-center justify-center gap-2`}
         style={{
           backgroundColor: bgColor,
           borderColor: borderColor,
@@ -88,7 +92,10 @@ export default function Button({
           <Icon name={iconName as any} size={iconSize} color={iconColor} />
         )}
 
-        <Text className=" font-bold text-base" style={{ color: iconColor }}>
+        <Text
+          className={`${textStyle} font-bold text-base`}
+          style={{ color: iconColor }}
+        >
           {title}
         </Text>
       </Pressable>

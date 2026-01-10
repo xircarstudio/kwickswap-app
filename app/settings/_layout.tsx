@@ -26,6 +26,13 @@ export default function BillsLayout() {
             header: () => <CustomHeader title="Security" />,
           }}
         />
+
+        <Stack.Screen
+          name="kyc"
+          options={{
+            header: () => <CustomHeader title="KYC Verification" />,
+          }}
+        />
       </Stack>
     </SafeAreaView>
   );

@@ -34,7 +34,7 @@ export const AccountItems: SettingItem[] = [
     title: "KYC Verification",
     color: colors.secondary,
     icon: <MaterialIcons name="verified" size={20} color={colors.secondary} />,
-    route: "/",
+    route: "/settings/kyc",
   },
 
   {
@@ -136,7 +136,7 @@ export const AccountSettingsItems: SettingItem[] = [
     title: "KYC Verification",
     color: colors.secondary,
     icon: <MaterialIcons name="verified" size={20} color={colors.secondary} />,
-    route: "/",
+    route: "/settings/kyc",
   },
 ];
 

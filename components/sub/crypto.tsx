@@ -25,13 +25,26 @@ const Crypto = () => {
       </View>
       <TouchableOpacity
         onPress={() => setModal(true)}
-        className="bg-[#0B0F14] rounded-xl p-4 mb-6"
+        className="bg-input rounded-xl p-4 mb-6"
       >
         <Text className="text-gray-400 text-xs">Select Token</Text>
         <Text className="text-white font-semibold mt-1">
           {token.name} ({token.symbol})
         </Text>
       </TouchableOpacity>
+
+      <View className="mb-6">
+        <TextInputs
+          label="Amount"
+          placeholder="0.00"
+          isNumber
+          rightButton={{
+            text: "Max",
+            onPress: () => console.log("Search"),
+          }}
+        />
+      </View>
+
       <TokenModal
         visible={modal}
         onClose={() => setModal(false)}

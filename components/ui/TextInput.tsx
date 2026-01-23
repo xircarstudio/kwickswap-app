@@ -75,7 +75,7 @@ const TextInputs = ({
 
       <Animated.View
         style={{ borderColor }}
-        className="flex-row items-center rounded-xl px-4 border"
+        className="flex-row items-center rounded-xl px-4 border bg-input"
       >
         <TextInput
           {...props}
@@ -83,7 +83,7 @@ const TextInputs = ({
           onBlur={handleBlur}
           onChangeText={handleChange}
           keyboardType={isNumber ? "decimal-pad" : props.keyboardType}
-          className="flex-1 text-text py-4"
+          className="flex-1 text-text py-6 text-lg"
           placeholderTextColor="#6B7280"
         />
 
@@ -94,9 +94,17 @@ const TextInputs = ({
             disabled={!rightButton.onPress}
           >
             {rightButton.text && (
-              <Text className="text-primary font-semibold">
-                {rightButton.text}
-              </Text>
+              <View
+                className="rounded-xl bg-secondary/10"
+                style={{ borderRadius: 8 }}
+              >
+                <Text
+                  className="text-secondary font-semibold"
+                  style={{ marginVertical: 6, marginHorizontal: 10 }}
+                >
+                  {rightButton.text}
+                </Text>
+              </View>
             )}
 
             {rightButton.icon && (

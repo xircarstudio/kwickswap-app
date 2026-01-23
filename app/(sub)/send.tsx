@@ -1,75 +1,108 @@
-import AmountPad from "@/components/ui/AmountPad";
-import Toggle, { ToggleValue } from "@/components/ui/Toggle";
-import TokenModal from "@/components/ui/TokenModal";
-import { Token } from "@/types/token";
-import { useState } from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { colors } from "@/assets/styles/styles";
+import Crypto from "@/components/sub/crypto";
+import Fiat from "@/components/sub/fiat";
+import SegmentedTabs, { TabItem } from "@/components/ui/SegmentedTabs";
+import React, { useState } from "react";
+import {
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  View,
+} from "react-native";
 
-export default function SendCrypto() {
-  const [mode, setMode] = useState<ToggleValue>("Crypto");
-  const [amount, setAmount] = useState<string>("");
-  const [token, setToken] = useState<Token>({
-    name: "Bitcoin",
-    symbol: "BTC",
-    balance: 1.24,
-  });
-  const [modal, setModal] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+const WalletScreen = () => {
+  const [q, setQ] = useState("");
+  const [refreshing, setRefreshing] = useState(false);
+  const [activeTab, setActiveTab] = useState("crypto");
+  const [showFixedTabs, setShowFixedTabs] = useState(false);
 
-  const continueSend = (): void => {
-    if (!amount || Number(amount) <= 0) {
-      setError("Enter a valid amount");
-      return;
-    }
-    setError("");
-    alert("Transaction Ready 🚀");
+  const tabs: TabItem[] = [
+    { key: "crypto", label: "Crypto" },
+    { key: "fiat", label: "Fiat" },
+  ];
+
+  const headerHeight = 360;
+
+  const onRefresh = () => {
+    setRefreshing(true);
+    setTimeout(() => setRefreshing(false), 1200);
   };
 
-  return (
-    <ScrollView className="flex-1 bg-black px-4 pt-6">
-      <Toggle value={mode} onChange={setMode} />
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const offsetY = event.nativeEvent.contentOffset.y;
+    setShowFixedTabs(offsetY > headerHeight - 40);
+  };
 
-      {/* Token */}
-      <TouchableOpacity
-        onPress={() => setModal(true)}
-        className="bg-[#0B0F14] rounded-xl p-4 mb-6"
-      >
-        <Text className="text-gray-400 text-xs">Select Token</Text>
-        <Text className="text-white font-semibold mt-1">
-          {token.name} ({token.symbol})
-        </Text>
-      </TouchableOpacity>
-
-      {/* Amount */}
-      <View className="bg-[#1F2937] rounded-xl p-4">
-        <Text className="text-white text-3xl font-semibold">
-          {amount || "0.00"}
-        </Text>
-        <Text className="text-gray-400 text-xs mt-1">
-          Available: {token.balance} {token.symbol}
-        </Text>
-      </View>
-
-      {error ? (
-        <Text className="text-red-500 text-xs mt-2">{error}</Text>
-      ) : null}
-
-      <AmountPad value={amount} onChange={setAmount} />
-
-      <TouchableOpacity
-        onPress={continueSend}
-        className="bg-emerald-400 rounded-xl py-4 mt-6 mb-10"
-      >
-        <Text className="text-black text-center font-semibold text-base">
-          Continue
-        </Text>
-      </TouchableOpacity>
-
-      <TokenModal
-        visible={modal}
-        onClose={() => setModal(false)}
-        onSelect={setToken}
+  const TabsComponent = () => (
+    <View style={styles.tabsContainer}>
+      <SegmentedTabs
+        tabs={tabs}
+        value={activeTab}
+        onChange={(key) => {
+          setActiveTab(key);
+          setQ("");
+        }}
       />
-    </ScrollView>
+    </View>
   );
-}
+
+  return (
+    <View className="flex-1 bg-primary">
+      {/* Fixed tabs */}
+      {showFixedTabs && (
+        <View style={styles.fixedTabsWrapper}>
+          <TabsComponent />
+        </View>
+      )}
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        scrollEventThrottle={16}
+        onScroll={handleScroll}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            tintColor={colors.primary}
+          />
+        }
+      >
+        {/* HEADER */}
+
+        {/* NORMAL TABS */}
+        <TabsComponent />
+
+        {/* TAB CONTENT */}
+        <View className="px-container mt-4">
+          {activeTab === "crypto" && <Crypto />}
+          {activeTab === "fiat" && <Fiat />}
+        </View>
+
+        <View className="pb-8" />
+      </ScrollView>
+    </View>
+  );
+};
+
+export default WalletScreen;
+
+const styles = StyleSheet.create({
+  tabsContainer: {
+    backgroundColor: "black",
+    paddingTop: 16,
+    paddingBottom: 12,
+  },
+  fixedTabsWrapper: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
+    elevation: 100,
+    backgroundColor: "black",
+    paddingTop: 16,
+    paddingBottom: 12,
+  },
+});

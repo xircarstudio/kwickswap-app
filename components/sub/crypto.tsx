@@ -1,0 +1,33 @@
+import { Token } from "@/types/token";
+import React, { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import TokenModal from "../ui/TokenModal";
+
+const Crypto = () => {
+  const [token, setToken] = useState<Token>({
+    name: "Bitcoin",
+    symbol: "BTC",
+    balance: 1.24,
+  });
+  const [modal, setModal] = useState<boolean>(false);
+  return (
+    <View>
+      <TouchableOpacity
+        onPress={() => setModal(true)}
+        className="bg-[#0B0F14] rounded-xl p-4 mb-6"
+      >
+        <Text className="text-gray-400 text-xs">Select Token</Text>
+        <Text className="text-white font-semibold mt-1">
+          {token.name} ({token.symbol})
+        </Text>
+      </TouchableOpacity>
+      <TokenModal
+        visible={modal}
+        onClose={() => setModal(false)}
+        onSelect={setToken}
+      />
+    </View>
+  );
+};
+
+export default Crypto;

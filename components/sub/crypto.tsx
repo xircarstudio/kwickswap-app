@@ -1,6 +1,7 @@
 import { Token } from "@/types/token";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import TextInputs from "../ui/TextInput";
 import TokenModal from "../ui/TokenModal";
 
 const Crypto = () => {
@@ -12,6 +13,16 @@ const Crypto = () => {
   const [modal, setModal] = useState<boolean>(false);
   return (
     <View>
+      <View className="mb-6">
+        <TextInputs
+          label="Recipient Address"
+          placeholder="Enter wallet address or username"
+          rightButton={{
+            icon: "qr-code",
+            onPress: () => console.log("Search"),
+          }}
+        />
+      </View>
       <TouchableOpacity
         onPress={() => setModal(true)}
         className="bg-[#0B0F14] rounded-xl p-4 mb-6"

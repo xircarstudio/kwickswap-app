@@ -43,6 +43,9 @@ const Crypto = () => {
             onPress: () => console.log("Search"),
           }}
         />
+        <View className="text-white">
+          <Text>~ $0.00</Text> <Text> Available: 1.24 BTC</Text>
+        </View>
       </View>
 
       <TokenModal
